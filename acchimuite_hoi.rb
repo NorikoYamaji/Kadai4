@@ -1,13 +1,22 @@
 require "csv" 
    puts"------------------------------"
    puts"あっち向いてホイッを始めます。"
-puts "最初はグーじゃんけん・・・・"
+   puts "最初はグーじゃんけん・・・・"
 
 class JankenAcchimuitehoi  #classをつけてじゃんけんの勝敗とあっち向いてホイを連動させようとしている
                             #じゃんけんとあっち向いてホイを一かたまりにしてloopさせたい
                             #でもエラーになる
-jankenacchimuitehoi = JankenAcchimuitehoi.new #インスタンスメソッド作成
-                                                 #定義されていないと警告されている
+
+def initialize(win) 
+  @win = win
+  @lose = lose
+  
+end
+  
+win = JankenAcchimuitehoi.new(win) #インスタンスメソッド作成
+lose = JankenAcchimuitehoi.new(lose)
+
+JankenAcchimuitehoi.acchimuite_hoi #インスタンスメソッドを呼び出し
 
 def janken #じゃんけんの定義
   puts "[0]グー\n[1]チョキ\n[2]パー\n[3]戦わない"
@@ -15,10 +24,6 @@ def janken #じゃんけんの定義
   my_hand = gets.to_i
   pc_hand = rand(4)
   
-  def initialize(win, lose) #勝ったら自分、負けたらpcが方向を指定できるようにしたい。
-  @janken_win = win
-  @janken_lose = lose
-  end
   
   jankens = ["グー", "チョキ","パー","戦わない"]
   puts "あなたの手:#{jankens[my_hand]}, 相手の手:#{jankens[pc_hand]}"
@@ -61,9 +66,9 @@ end
     puts "あなたの向き:#{directions[my_face]}, 相手の向き:#{directions[pc_face]}"
     
     if my_face == pc_face
-      if
+      if @win
         puts "あっち向いてホイに勝った！"
-      else
+      else @lose
         puts "あっち向いてホイに負けた"
       end
       
@@ -72,6 +77,6 @@ end
     end
   end
   
-　janken_acchimuitehoi.acchimuite_hoi #インスタンスメソッドを呼び出し
+　
 　
 end
