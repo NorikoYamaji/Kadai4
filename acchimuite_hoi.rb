@@ -9,14 +9,19 @@ class JankenAcchimuitehoi  #classをつけてじゃんけんの勝敗とあっ�
 
 def initialize(win) 
   @win = win
+  
+def initialize(lose) 
   @lose = lose
-  
+
 end
-  
+end
+
 win = JankenAcchimuitehoi.new(win) #インスタンスメソッド作成
 lose = JankenAcchimuitehoi.new(lose)
 
-JankenAcchimuitehoi.acchimuite_hoi #インスタンスメソッドを呼び出し
+JankenAcchimuitehoi.win #インスタンスメソッドを呼び出し
+JankenAcchimuitehoi.lose
+
 
 def janken #じゃんけんの定義
   puts "[0]グー\n[1]チョキ\n[2]パー\n[3]戦わない"
@@ -76,7 +81,4 @@ end
       puts "引き分け"
     end
   end
-  
-　
-　
 end
