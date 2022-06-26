@@ -10,6 +10,7 @@ def janken_acchi
 
 end
 
+#じゃんけんメソッド
 def janken
   puts "[0]グー\n[1]チョキ\n[2]パー\n[3]戦わない"
 
@@ -22,82 +23,71 @@ def janken
 
   win = (my_hand == 0 && pc_hand == 1) || (my_hand == 1 && pc_hand == 2) || (my_hand == 2 && pc_hand == 0)
   draw = my_hand == pc_hand
-  finish = my_hand == 3
+  fin = my_hand == 3
         
    if draw
      puts "あいこで"
      @janken_judge = "draw"
+     return true
         
-   elsif finish
+   elsif fin
      puts "また今度！"
-     @janken_judge = "finish"
-     return false
+     @janken_judge = "fin"
+     exit
         
    elsif win
      puts "やったね！"
      @janken_judge = "win"
+     #return false
         
    else 
      puts "残念。負けちゃった。"
      @janken_judge = "lose"
-   end  
-    
-   if @janken_judge == "draw"
-   janken
-    
-   #else @janken_judge == "finish"
+     #return false
      
    end
+    
+   #if @janken_judge == "draw"
+   #janken
+   #end
 
    next_game = true
 
    while next_game = janken
    end
 
+#あっち向いてほいメソッド
 def acchimuite_hoi
-   if @janken_judge == "win"
-     puts "あっち向いてホイ"
-     puts "[0]上\n[1]下\n[2]右\n[3]左"
-     my_face = gets.to_i
-     pc_face = rand(4)
+  puts "[0]上\n[1]下\n[2]右\n[3]左"
+  puts "あっち向いてホイ"
+  
+  my_face = gets.to_i
+  pc_face = rand(4)
+  
+  directions = ["上", "下", "右", "左"]
+  puts "あなたの向き:#{directions[my_face]}, 相手の向き:#{directions[pc_face]}"
+  
+   if @janken_judge == "win" && my_face == pc_face #勝った場合
+     puts "おめでとう。あなたの勝ちです！"
+     return false
         
-     directions = ["上", "下", "右", "左"]
-        
-   elsif my_face == pc_face
-     puts "あなたの向き:#{directions[my_face]}, 相手の向き:#{directions[pc_face]}"
-     puts "あっちむいてほいの勝負であなたの勝ちです。"
-        
-   else
-     puts "あなたの向き:#{directions[my_face]}, 相手の向き:#{directions[pc_face]}"
-     puts "あっちむいてホイの勝負がつかない。"
-     puts "じゃんけんやり戻し。"
-     janken
-            
+   elsif @janken_judge == "lose" && my_face == pc_face #負けた場合
+     puts "残念。あなたの負けです。"
+     return false
+     
+   else #勝敗がつかない場合
+     puts "良い戦いだ！"
+     puts "じゃんけんホイ。"
+     return true
    end
-          
-   if @janken_judge == "lose"
-     puts "あっちむいてホイ"
-     puts "[0]上\n[1]下\n[2]右\n[3]左"
-     my_face= gets.to_i
-     pc_face = rand(4)
-        
-     directions = ["上", "下", "右", "左"]
-        
-   elsif lose_my_face == win_pc_face
-     puts "あなたの向き:#{directions[my_face]}, 相手の向き:#{directions[pc_face]}"
-     puts "あっち向いてホイの勝負であなたの負けです。"
-        
-   elsif
-     puts "あなたの向き:#{directions[my_face]}, 相手の向き:#{directions[pc_face]}"
-     puts "あっち向いてホイの勝負がつかない。"
-     puts "じゃんけんのやり戻し"
-     janken
-      
-   end    
+   acchimuite_hoi #あっち向いてホイメソッドの呼び出し。できてない。＝＝間違っている？
+   
 　end
- 
+　
 end
 end
 end
-janken_hoi_game = JankenAcchimuitehoi.new
-janken_hoi_game.janken
+janken_hoi_game = JankenAcchimuitehoi.new #インスタンスメソッド作成
+janken_hoi_game.janken#インスタンスメソッド呼び出し
+janken_acchi #じゃんけんの勝敗を定義するメソッドの呼び出し
+acchimuite_hoi #あっち向いてホイメソッドの呼び出し
