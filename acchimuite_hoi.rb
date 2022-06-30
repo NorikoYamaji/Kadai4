@@ -1,23 +1,12 @@
-class JankenAcchimuitehoi  
-  
-   puts"------------------------------"
-   puts"あっち向いてホイッを始めます。"
-   puts "最初はグーじゃんけん・・・・"
-  
-def janken_acchi 
-  
-  @janken_judge = ""
-  janken_acchi #janken_acchiメソッドの呼び出し
-
-end
-
+  puts"------------------------------"
+  puts"あっち向いてホイッを始めます。"
+  puts "最初はグーじゃんけん・・・・"
 #じゃんけんメソッド
 def janken
   puts "[0]グー\n[1]チョキ\n[2]パー\n[3]戦わない"
 
   my_hand = gets.to_i
   pc_hand = rand(0..2)
-  
   
   jankens = ["グー", "チョキ","パー","戦わない"]
   puts "あなたの手:#{jankens[my_hand]}, 相手の手:#{jankens[pc_hand]}"
@@ -28,34 +17,24 @@ def janken
         
    if draw
      puts "あいこで"
-     @janken_judge = "draw"
+     janken
      return true
         
    elsif fin
      puts "また今度！"
-     @janken_judge = "fin"
      exit
         
    elsif win
      puts "やったね！"
-     @janken_judge = "win"
-     #return false
-        
-   else 
-     puts "残念。負けちゃった。"
-     @janken_judge = "lose"
-     #return false
+     acchimuite_hoi
+     return false
      
+   else
+     puts "残念。負けちゃった。"
+     acchimuite_hoi
+     return false
    end
-    
-   #if @janken_judge == "draw"
-   #janken
-   #end
-
-   next_game = true
-
-   while next_game = janken
-   end
+end
 
 #あっち向いてほいメソッド
 def acchimuite_hoi
@@ -68,24 +47,24 @@ def acchimuite_hoi
   directions = ["上", "下", "右", "左"]
   puts "あなたの向き:#{directions[my_face]}, 相手の向き:#{directions[pc_face]}"
   
-   if @janken_judge == "win" && my_face == pc_face #勝った場合
+   if my_face == pc_face #勝った場合
      puts "おめでとう。あなたの勝ちです！"
-     return false
+     exit
         
-   elsif @janken_judge == "lose" && my_face == pc_face #負けた場合
+   elsif my_face == pc_face #負けた場合
      puts "残念。あなたの負けです。"
-     return false
+     exit
      
    else #勝敗がつかない場合
      puts "良い戦いだ！"
      puts "じゃんけんホイ。"
+     janken
      return true
    end
-  acchimuite_hoi #あっち向いてホイメソッド呼び出し。できてない。＝＝間違っている？
 end
-end
-end
-janken_hoi_game = JankenAcchimuitehoi.new #インスタンスメソッド作成
-janken_hoi_game.janken #インスタンスメソッド呼び出し
 
-#acchimuite_hoi #あっち向いてホイメソッド呼び出し。どこに書くのか迷走中。
+next_game = true
+   
+   while next_game do
+     next_game = janken
+   end
