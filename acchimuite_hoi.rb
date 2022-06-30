@@ -7,6 +7,7 @@ class JankenAcchimuitehoi
 def janken_acchi 
   
   @janken_judge = ""
+  janken_acchi #janken_acchiメソッドの呼び出し
 
 end
 
@@ -80,14 +81,11 @@ def acchimuite_hoi
      puts "じゃんけんホイ。"
      return true
    end
-   acchimuite_hoi #あっち向いてホイメソッドの呼び出し。できてない。＝＝間違っている？
-   
-　end
-　
+  acchimuite_hoi #あっち向いてホイメソッド呼び出し。できてない。＝＝間違っている？
 end
 end
 end
 janken_hoi_game = JankenAcchimuitehoi.new #インスタンスメソッド作成
-janken_hoi_game.janken#インスタンスメソッド呼び出し
-janken_acchi #じゃんけんの勝敗を定義するメソッドの呼び出し
-acchimuite_hoi #あっち向いてホイメソッドの呼び出し
+janken_hoi_game.janken #インスタンスメソッド呼び出し
+
+#acchimuite_hoi #あっち向いてホイメソッド呼び出し。どこに書くのか迷走中。
