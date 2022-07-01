@@ -1,10 +1,11 @@
   puts"------------------------------"
   puts"あっち向いてホイッを始めます。"
   puts "最初はグーじゃんけん・・・・"
+  
 #じゃんけんメソッド
 class Janken_acchi
 def janken
-    @janken_result = ("")
+    @janken_result = ""
   puts "[0]グー\n[1]チョキ\n[2]パー\n[3]戦わない"
 
   my_hand = gets.to_i
@@ -15,7 +16,7 @@ def janken
   puts "あなたの手:#{jankens[my_hand]}, 相手の手:#{jankens[pc_hand]}"
 
   win = (my_hand == 0 && pc_hand == 1) || (my_hand == 1 && pc_hand == 2) || (my_hand == 2 && pc_hand == 0)
-  lose = (my_hand == 0 && pc_hand == 2) || (my_hand == 1 && pc_hand == 0) || (my_hand == 2 && pc_hand == 1) 
+  lose = (my_hand == 0 && pc_hand == 2) || (my_hand == 1 && pc_hand == 0) || (my_hand == 2 && pc_hand == 1)
   draw = my_hand == pc_hand
   fin = my_hand == 3
         
@@ -28,12 +29,12 @@ def janken
      puts "また今度！"
      exit
         
-   elsif win
+   elsif win || @janken_result == "win"
      puts "やったね！"
      acchimuite_hoi
      return false
      
-   elsif lose
+   elsif lose || @janken_result == "lose"
      puts "残念。負けちゃった。"
      acchimuite_hoi
      return false
@@ -52,11 +53,11 @@ def acchimuite_hoi
   puts "ホイッ！"
   puts "あなたの向き:#{directions[my_face]}, 相手の向き:#{directions[pc_face]}"
   
-   if @janken_result = "win" && my_face == pc_face #勝った場合
+   if @janken_result == "win" || my_face == pc_face #勝った場合
      puts "おめでとう。あなたの勝ちです！"
      exit
         
-   elsif @janken_result = "lose" && my_face == pc_face #負けた場合
+   elsif @janken_result == "lose" || my_face == pc_face #負けた場合
      puts "残念。あなたの負けです。"
      exit
      
@@ -67,14 +68,14 @@ def acchimuite_hoi
      return true
    end
 end
+end #class janken_acchi
 
-next_game = true
+janken_acchi = Janken_acchi.new()
+janken_acchi.janken()
+janken_acchi.acchimuite_hoi()
+
+ next_game = true
    
    while next_game do
      next_game = janken
    end
-
-end
-   
- janken_acchi = Janken_result.new("win,lose")
- janken_acchi.janken_result
