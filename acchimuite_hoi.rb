@@ -53,24 +53,27 @@ def acchimuite_hoi
   puts "ホイッ！"
   puts "あなたの向き:#{directions[my_face]}, 相手の向き:#{directions[pc_face]}"
   
-   if @janken_result == "win" || my_face == pc_face #勝った場合
+   #勝った場合
+   if @janken_result == "win" || my_face == pc_face
      puts "おめでとう。あなたの勝ちです！"
      exit
-        
-   elsif @janken_result == "lose" || my_face == pc_face #負けた場合
+  
+   #負けた場合
+   elsif @janken_result == "lose" || my_face == pc_face
      puts "残念。あなたの負けです。"
      exit
-     
-   else #勝敗がつかない場合
+   
+   #勝敗がつかない場合   
+   else 
      puts "良い戦いだ！"
      puts "じゃんけん"
      janken
      return true
    end
 end
-end #class janken_acchi
+end #class janken_acchiのend
 
-janken_acchi = Janken_acchi.new()
+janken_acchi = Janken_acchi.new("win","lose")
 janken_acchi.janken()
 janken_acchi.acchimuite_hoi()
 
