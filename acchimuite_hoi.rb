@@ -54,7 +54,7 @@ def acchimuite_hoi
   my_face = gets.to_i
   pc_face = rand(4)
   
-  directions = ["上", "下", "右", "左"]
+  directions = ["上", "下", "左", "右"]
   puts "ホイッ！"
   puts "あなたの向き:#{directions[my_face]}\n相手の向き:#{directions[pc_face]}"
   puts"------------------------------"
